@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+header {
+    background: #005f6b;
+    color: white;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #028f9b 3px solid;
+}
+
+header h1, header h2 {
+    padding: 0 15px;
+}
+
+.downloads {
+    background: #fff;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.download-link {
+    display: block;
+    margin-bottom: 10px;
+    background: #008f9b;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.download-link:hover {
+    background: #005f6b;
+}
