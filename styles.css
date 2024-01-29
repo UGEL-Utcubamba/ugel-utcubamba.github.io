@@ -33,7 +33,7 @@ header h1, header h2 {
 .download-link {
     display: block;
     margin-bottom: 10px;
-    background: #008f9b;
+    background: #005f6b;
     color: white;
     text-decoration: none;
     padding: 10px;
@@ -42,5 +42,16 @@ header h1, header h2 {
 }
 
 .download-link:hover {
-    background: #005f6b;
+    background: #028f9b;
+}
+.ugel-logo {
+    display: block;
+    margin: 0 auto;
+    width: 100px; /* Ajusta el tamaño según tus necesidades */
+}
+
+.specialist-name {
+    color: #555;
+    font-style: italic;
+    margin-left: 20px;
 }
