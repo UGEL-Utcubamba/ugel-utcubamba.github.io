@@ -63,6 +63,26 @@
                 <!-- Agrega más entradas de la agenda según sea necesario -->
             </ul>
         </section>
+
+        <script type="text/javascript">
+            const CLIENT_ID = '196951549765-2nkohp29igtk5njjfn1bc3unk9iesgfq.apps.googleusercontent.com';
+            const API_KEY = 'AIzaSyBVC8PpgVrq85xt9UnbHParUi-O4pUBd8I';
+            // Agrega un escucha a cada enlace de descarga
+            document.querySelectorAll('.download-link').forEach(function(link) {
+              link.addEventListener('click', function(e) {
+                registrarDescarga(e.target.href);
+              });
+            });
+      
+            // Función para registrar la descarga
+            function registrarDescarga(urlDescarga) {
+              // Aquí se captura la URL de descarga y se podría enviar a tu backend
+              console.log('Descargando archivo desde:', urlDescarga);
+              // Implementa la lógica para enviar esta información a tu backend
+            }
+          </script>
+          <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+          <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
         
     </div>
 </body>
