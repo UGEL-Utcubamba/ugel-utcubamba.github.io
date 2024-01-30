@@ -12,6 +12,13 @@
     <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
 
     <pre id="content" style="white-space: pre-wrap;"></pre>
+    
+    <section class="data-entry">
+      <h3>Ingresar Datos en Google Sheets:</h3>
+      <input type="text" id="nombreArchivo" placeholder="Nombre del Archivo">
+      <input type="text" id="fecha" placeholder="Fecha">
+      <button onclick="ingresarDatos()">Enviar Datos</button>
+  </section>
 
     <script type="text/javascript">
       /* exported gapiLoaded */
@@ -143,6 +150,26 @@
             'Nombre Archivo, Fecha:\n');
         document.getElementById('content').innerText = output;
       }
+      async function ingresarDatos() {
+    var nombreArchivo = document.getElementById('nombreArchivo').value;
+    var fecha = document.getElementById('fecha').value;
+
+    try {
+        await gapi.client.sheets.spreadsheets.values.append({
+            spreadsheetId: '1T6L0uv03qVJOYLjwLC8Vw4DL2gPEhKpl4T0BQ7GVmrg',
+            range: 'Hoja 1!A:B',
+            valueInputOption: 'USER_ENTERED',
+            resource: {
+                values: [[nombreArchivo, fecha]]
+            }
+        });
+        // Aquí puedes agregar código para manejar una respuesta exitosa.
+    } catch (err) {
+        console.error('Error al ingresar datos:', err.message);
+        // Aquí puedes agregar código para manejar el error.
+    }
+}
+
     </script>
     <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
     <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
