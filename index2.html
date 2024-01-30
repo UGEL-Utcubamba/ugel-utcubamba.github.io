@@ -139,7 +139,7 @@
         }
         // Flatten to string to display
         const output = range.values.reduce(
-            (str, row) => `${str}${row[0]}, ${row[4]}\n`,
+            (str, row) => `${str}${row[0]}, ${row[1]}\n`,
             'Nombre Archivo, Fecha:\n');
         document.getElementById('content').innerText = output;
       }
