@@ -72,7 +72,7 @@
       }
       document.getElementById('signout_button').style.display = 'inline-block';
       document.getElementById('authorize_button').innerText = 'Refresh';
-      await getTurnos();
+      await getrepositorio();
       actualizarTarjetas();
     };
 
