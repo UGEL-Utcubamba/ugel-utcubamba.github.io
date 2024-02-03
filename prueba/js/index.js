@@ -11,20 +11,18 @@ const comentarioElement = document.getElementById("comentario");
 const marcarTerminadoElement = document.getElementById("finalizar");
 
 
-function createTarjeta(repositorio,index){
+function createTarjeta(turno,index){
   const nuevaTarjeta = document.createElement("div");
   nuevaTarjeta.classList = "tarjeta";
   nuevaTarjeta.innerHTML = `
-    <h3>${repositorio.autor}</h3>
-    <p>${repositorio.contenido}</p>
-    <p>${repositorio.enlace}</p>
-    <p>${repositorio.especialidad}</p>
+    <h3>${turno.cliente}</h3>
+    <p>${turno.email}</p>
+    <p>${turno.modelo}</p>
+    <p>${turno.problema}</p>
   `
   nuevaTarjeta.addEventListener("click", ()=> actualizarDetalle(index))
   turnosContainer.appendChild(nuevaTarjeta);
 }
-
-
 
 function actualizarTarjetas(){
   turnosContainer.innerHTML = "";
