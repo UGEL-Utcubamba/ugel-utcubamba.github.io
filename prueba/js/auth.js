@@ -1,4 +1,4 @@
- /* exported gapiLoaded */
+  /* exported gapiLoaded */
   /* exported gisLoaded */
   /* exported handleAuthClick */
   /* exported handleSignoutClick */
@@ -72,7 +72,7 @@
       }
       document.getElementById('signout_button').style.display = 'inline-block';
       document.getElementById('authorize_button').innerText = 'Refresh';
-      await getRepositorios();
+      await getTurnos();
       actualizarTarjetas();
     };
 
