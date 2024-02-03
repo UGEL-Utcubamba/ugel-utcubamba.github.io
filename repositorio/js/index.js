@@ -1,5 +1,7 @@
 // import turnos from "./turnos.js";
 
+let repositorios; // Asegúrate de que 'repositorios' se obtiene o define correctamente en alguna parte
+
 const repositoriosContainer = document.getElementById("repositoriosContainer");
 const detalleContainer = document.getElementById("detalleContainer");
 let indiceSeleccionado;
@@ -17,9 +19,9 @@ function createTarjeta(repositorio, index) {
   nuevaTarjeta.classList = "tarjeta";
   nuevaTarjeta.innerHTML = `
     <h3>${repositorio.autor}</h3>
-    <p>${repositorio.enlace_descarga}</p>
-    <p>${repositorio.especialidad}</p>
-    <p>${repositorio.fecha}</p>
+    <p>Enlace de Descarga: <a href="${repositorio.enlace_descarga}" target="_blank">Descargar</a></p>
+    <p>Especialidad: ${repositorio.especialidad}</p>
+    <p>Fecha: ${repositorio.fecha}</p>
   `;
   nuevaTarjeta.addEventListener("click", () => actualizarDetalle(index));
   repositoriosContainer.appendChild(nuevaTarjeta);
@@ -37,7 +39,7 @@ function actualizarDetalle(index) {
     repositoriosContainer.children[indiceSeleccionado].classList.toggle("seleccionado", false);
   autorElement.innerText = repositorios[index].autor;
   contenidoElement.innerText = repositorios[index].contenido;
-  enlaceDescargaElement.innerText = repositorios[index].enlace_descarga;
+  enlaceDescargaElement.innerHTML = `<a href="${repositorios[index].enlace_descarga}" target="_blank">Descargar</a>`;
   especialidadElement.innerText = repositorios[index].especialidad;
   fechaElement.innerText = repositorios[index].fecha;
   detalleContainer.classList.toggle("escondido", false);
@@ -46,20 +48,27 @@ function actualizarDetalle(index) {
   detalleContainer.classList.add("visible");
 }
 
-finalizar.addEventListener("click", () => {
+marcarTerminadoElement.addEventListener("click", async () => {
   detalleContainer.classList.remove("visible");
-  marcarTerminado(indiceSeleccionado);
+  await marcarTerminado(indiceSeleccionado);
 });
 
 async function marcarTerminado(i) {
   const updateRepositorio = repositorios[i];
   updateRepositorio.comentario = comentarioElement.value;
+  // Asume que editRepositorio es una función que edita el repositorio y devuelve una promesa
   const res = await editRepositorio(updateRepositorio.id, updateRepositorio);
   if (res.status === 200) {
     repositorios = repositorios.filter(repositorio => repositorio.id !== updateRepositorio.id);
-    indiceSeleccionado = 0;
+    indiceSeleccionado = undefined;
     await actualizarTarjetas();
     detalleContainer.classList.toggle("escondido", true);
     comentarioElement.value = "";
   }
 }
+
+document.addEventListener('DOMContentLoaded', async () => {
+    // Asume que cargarRepositorios es una función que obtiene los repositorios y los almacena en la variable 'repositorios'
+    await cargarRepositorios(); // Define esta función según corresponda
+    actualizarTarjetas();
+});

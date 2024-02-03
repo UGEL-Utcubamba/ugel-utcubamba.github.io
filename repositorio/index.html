@@ -2,46 +2,31 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión y Visualización de Repositorios</title>
     <link rel="stylesheet" href="style.css">
-    <script src="js/credenciales.js"></script>
-    <script src="js/index.js" defer></script>
-    <script async defer src="https://apis.google.com/js/api.js" id="gapi"></script>
-    <script async defer src="https://accounts.google.com/gsi/client" id="gis"></script>
-    <script async defer src="js/sheets.js"></script>
-    <title>Document</title>
 </head>
 <body>
-<header>
-    <h1>Repositorios UGEL Utcubamba</h1>
-</header>
-<main>
-    <div id="repositoriosContainer"></div>
+    <div id="content">
+        <button id="authorize_button" onclick="handleAuthClick()" style="display: none;">Iniciar sesión</button>
+    </div>
+    <div id="repositoriosContainer" style="display: none;"></div>
     <div id="detalleContainer" class="escondido">
         <h2 id="autor">Autor</h2>
         <p>Contenido: <span id="contenido"></span></p>
-        <p>Enlace de Descarga: <span id="enlaceDescarga"></span></p>
+        <p>Enlace de Descarga: <a href="#" id="enlaceDescarga">Descargar</a></p>
         <p>Especialidad: <span id="especialidad"></span></p>
         <p>Fecha: <span id="fecha"></span></p>
         <div>
             <label for="comentario">Comentario: </label>
-            <input name="comentario" id="comentario"></input>
+            <input type="text" name="comentario" id="comentario"></input>
         </div>
         <button id="finalizar">Marcar finalizado</button>
     </div>
-</main>
 
-
-<!-- Add buttons to initiate auth sequence and sign out -->
-<div>
-    <button id="authorize_button" onclick="handleAuthClick()">Iniciar sesión</button>
-    <button id="signout_button" onclick="handleSignoutClick()">Cerrar sesión</button>
-</div>
-<script src="js/auth.js"></script>
-<footer>
-   
-</footer>
+    <script src="credenciales.js"></script>
+    <script src="auth.js"></script>
+    <script src="sheets.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>
-
