@@ -6,7 +6,7 @@ async function getRepositorios() {
   try {
     response = await gapi.client.sheets.spreadsheets.values.get({
       spreadsheetId: SPREADSHEET,
-      range: hoja + "!A:H", // Asegúrate de ajustar el rango según tus necesidades
+      range: hoja + "!A:G", // Asegúrate de ajustar el rango según tus necesidades
     });
   } catch (err) {
     document.getElementById("content").innerText = err.message;
@@ -48,7 +48,7 @@ async function editRepositorio(id, contenido) {
   const filaAEditar = parseInt(id) + 1;
   response = await gapi.client.sheets.spreadsheets.values.update({
     spreadsheetId: SPREADSHEET,
-    range: `${hoja}!A${filaAEditar}:H${filaAEditar}`, // Asegúrate de ajustar el rango según tus necesidades
+    range: `${hoja}!A${filaAEditar}:G${filaAEditar}`, // Asegúrate de ajustar el rango según tus necesidades
     values: [update],
     valueInputOption: "USER_ENTERED"
   });
