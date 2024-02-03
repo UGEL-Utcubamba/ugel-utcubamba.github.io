@@ -1,14 +1,14 @@
-// import repositorio from "./repositorio.js";
+// import turnos from "./turnos.js";
 
-const repositorioContainer = document.getElementById("repositorioContanier");
+const repositoriosContainer = document.getElementById("repositoriosContainer");
 const detalleContainer = document.getElementById("detalleContainer");
 let indiceSeleccionado;
 
-const autorElement = document.getElementById("autor");
-const contenidoElement = document.getElementById("contenido");
-const enlaceElement = document.getElementById("enlace");
+const clienteElement = document.getElementById("cliente");
+const modeloElement = document.getElementById("modelo");
+const problemaElement = document.getElementById("problema");
 const comentarioElement = document.getElementById("comentario");
-//const marcarTerminadoElement = document.getElementById("finalizar");
+const marcarTerminadoElement = document.getElementById("finalizar");
 
 
 function createTarjeta(repositorio,index){
@@ -21,24 +21,24 @@ function createTarjeta(repositorio,index){
     <p>${repositorio.comentario}</p>
   `
   nuevaTarjeta.addEventListener("click", ()=> actualizarDetalle(index))
-  repositorioContainer.appendChild(nuevaTarjeta);
+  repositoriosContainer.appendChild(nuevaTarjeta);
 }
 
 function actualizarTarjetas(){
-  repositorioContainer.innerHTML = "";
+  repositoriosContainer.innerHTML = "";
   repositorios.forEach((repositorio,i) => {
     createTarjeta(repositorio,i);
   })
 }
 
 function actualizarDetalle(index){
-  if(indiceSeleccionado !== undefined) repositorioContainer.children[indiceSeleccionado].classList.toggle("seleccionado",false);
-  autorElement.innerText = repositorios[index].cliente;
-  contenidoElement.innerText = repositorios[index].modelo;
-  enlaceElement.innerText = repositorios[index].problema;
+  if(indiceSeleccionado !== undefined) repositoriosContainer.children[indiceSeleccionado].classList.toggle("seleccionado",false);
+  clienteElement.innerText = repositorios[index].cliente;
+  modeloElement.innerText = repositorios[index].modelo;
+  problemaElement.innerText = repositorios[index].problema;
   detalleContainer.classList.toggle("escondido",false);
   indiceSeleccionado = index;
-  repositorioContainer.children[indiceSeleccionado].classList.toggle("seleccionado",true);
+  repositoriosContainer.children[indiceSeleccionado].classList.toggle("seleccionado",true);
 }
 
 finalizar.addEventListener("click",()=> marcarTerminado(indiceSeleccionado))
@@ -48,11 +48,10 @@ async function marcarTerminado(i){
   updateRepositorio.comentario = comentarioElement.value;
   const res = await editRepositorio(updateRepositorio.id,updateRepositorio);
   if(res.status === 200){
-    repositorios = repositorios.filter(repositorio => repositorio.id !== updateRepositorio.id);
+    repositorios = repositorios.filter(respositorio => respositorio.id !== updateRepositorio.id);
     indiceSeleccionado = 0;
     await actualizarTarjetas()
     detalleContainer.classList.toggle("escondido",true);
     comentarioElement.value="";
   }
 }
-
