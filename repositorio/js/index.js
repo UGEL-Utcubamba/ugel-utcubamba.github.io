@@ -43,9 +43,13 @@ function actualizarDetalle(index) {
   detalleContainer.classList.toggle("escondido", false);
   indiceSeleccionado = index;
   repositoriosContainer.children[indiceSeleccionado].classList.toggle("seleccionado", true);
+  detalleContainer.classList.add("visible");
 }
 
-finalizar.addEventListener("click", () => marcarTerminado(indiceSeleccionado));
+finalizar.addEventListener("click", () => {
+  detalleContainer.classList.remove("visible");
+  marcarTerminado(indiceSeleccionado);
+});
 
 async function marcarTerminado(i) {
   const updateRepositorio = repositorios[i];
