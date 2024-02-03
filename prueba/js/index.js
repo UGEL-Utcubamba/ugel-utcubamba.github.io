@@ -4,9 +4,9 @@ const repositoriosContainer = document.getElementById("repositoriosContainer");
 const detalleContainer = document.getElementById("detalleContainer");
 let indiceSeleccionado;
 
-const clienteElement = document.getElementById("cliente");
-const modeloElement = document.getElementById("modelo");
-const problemaElement = document.getElementById("problema");
+const autorElement = document.getElementById("autor");
+const contenidoElement = document.getElementById("contenido");
+const enlaceElement = document.getElementById("enlace");
 const comentarioElement = document.getElementById("comentario");
 const marcarTerminadoElement = document.getElementById("finalizar");
 
@@ -33,9 +33,9 @@ function actualizarTarjetas(){
 
 function actualizarDetalle(index){
   if(indiceSeleccionado !== undefined) repositoriosContainer.children[indiceSeleccionado].classList.toggle("seleccionado",false);
-  clienteElement.innerText = repositorios[index].cliente;
-  modeloElement.innerText = repositorios[index].modelo;
-  problemaElement.innerText = repositorios[index].problema;
+  autorElement.innerText = repositorios[index].cliente;
+  contenidoElement.innerText = repositorios[index].modelo;
+  enlaceElement.innerText = repositorios[index].problema;
   detalleContainer.classList.toggle("escondido",false);
   indiceSeleccionado = index;
   repositoriosContainer.children[indiceSeleccionado].classList.toggle("seleccionado",true);
