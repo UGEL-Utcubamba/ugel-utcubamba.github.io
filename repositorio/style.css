@@ -1,43 +1,87 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
+:root{
+  --color-text-titulos: #ffffff;
+  --color-texto: rgba(255, 255, 255, 0.867);
+  --color-acento: #E6E4C6;
+  --color-fondo: #0E3A47;
+  --color-fondo-tarjeta: #ffffff27;
+}
+
+body{
+  /* margin: 0; */
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+h2,h3,h4,h5,h6{
+  color: var(--color-text-titulos);
+  margin: 0px;
+}
+
+button{
+  background-color: var(--color-acento);
   padding: 20px;
-  background-color: #f4f4f4;
-}
-
-h1 {
-  color: #333;
-}
-
-#content {
-  background-color: #fff;
-  padding: 20px;
-  margin-top: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-#signin-button,
-#signout-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
+  font-weight: bold ;
+  border-radius: 2px;
+  border: unset;
   cursor: pointer;
-  margin-right: 10px;
 }
 
-#signin-button:hover,
-#signout-button:hover {
-  background-color: #45a049;
+#turnosContainer{
+  display: flex;
+  /* max-width: 90%; */
+  margin-bottom: 20px;
+  overflow-x:auto;
+  width: 95vw;
 }
 
-#repositorios-container div {
-  border-bottom: 1px solid #eee;
-  padding: 10px 0;
+.tarjeta{
+  border: 1px solid var(--color-fondo);
+  max-width: 200px;
+  padding: 10px;
+  background-color: var(--color-fondo-tarjeta);
+  user-select: none;
+  cursor: pointer;
+}
+.tarjeta:hover, .tarjeta.seleccionado{
+  background-color: var(--color-acento);
+  color: var(--color-fondo);
 }
 
-#repositorios-container div:last-child {
-  border-bottom: none;
+.tarjeta:hover h3, .tarjeta.seleccionado h3{
+  color: var(--color-fondo);
+}
+
+.tarjeta p{
+  White-Space: nowrap;
+  overflow: hidden;
+  Text-overflow: ellipsis;
+  margin: 0;
+}
+
+#detalleContainer{
+  background-color: var(--color-fondo-tarjeta);
+  padding:10px
+}
+#detalleContainer div{
+  margin-bottom:10px
+}
+#detalleContainer input{
+  padding:5px
+}
+
+.escondido{
+  display: none;
+}
+
+footer{
+  text-align: center;
+}
+
+footer a{
+  color: var(--color-texto);
 }
