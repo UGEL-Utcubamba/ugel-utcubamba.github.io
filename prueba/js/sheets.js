@@ -1,5 +1,5 @@
 const hoja = "Repositorios";
-let turnos;
+let repositorios;
 
 async function getRepositorios() {
   let response;
@@ -18,7 +18,7 @@ async function getRepositorios() {
     return;
   }
 
-  turnos = [];
+  repositorios = [];
   range.values.forEach((fila) => {
     if (isNaN(parseInt(fila[0])) || fila[5] !== undefined) return;
     const nuevoTurno = {
@@ -30,7 +30,7 @@ async function getRepositorios() {
       fecha_terminado: fila[5],
       comentario: fila[6]
     };
-    turnos.push(nuevoTurno);
+    repositorios.push(nuevoTurno);
   });
 }
 
