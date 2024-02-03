@@ -34,83 +34,53 @@ header h1, header h2 {
 .download-link {
   display: block;
   margin-bottom: 10px;
-  background: #005f6b;
+}
+
+/* Nuevos estilos sugeridos */
+#authorize_button {
+  background-color: #007bff;
   color: white;
-  text-decoration: none;
-  padding: 10px;
+  padding: 10px 20px;
+  border: none;
   border-radius: 5px;
-  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.download-link:hover {
-  background: #028f9b;
+#authorize_button:hover {
+  background-color: #0056b3;
 }
 
-.ugel-logo {
-  display: block;
-  margin: 0 auto;
-  width: 100px; /* Ajusta el tamaño según tus necesidades */
-}
-
-.specialist-name {
-  color: #555;
-  font-style: italic;
-  margin-left: 20px;
-}
-
-.agenda {
-  list-style: none;
-  padding: 0;
+#repositoriosContainer, #detalleContainer {
+  background-color: #ffffff;
+  padding: 20px;
   margin-top: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.agenda li {
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
-  border-left: 5px solid #005f6b;
-  padding: 10px;
-  position: relative;
+#detalleContainer h2, #detalleContainer p {
+  margin-bottom: 10px;
 }
-
-.agenda strong {
-  font-weight: bold;
-  color: #005f6b;
-}
-
-.agenda p {
-  margin: 0;
-  color: #333;
-}
-
-.agenda li:before {
-  content: "\2022"; /* Crea un marcador de viñeta personalizado */
-  color: #005f6b;
-  font-weight: bold;
-  font-size: 1.2em;
-  position: absolute;
-  left: -25px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
 
 .escondido {
   display: none;
 }
 
-#detalleContainer {
-  display: none;
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.3s ease;
+input[type="text"], button {
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-#detalleContainer.visible {
-  display: block;
-  opacity: 1;
-  max-height: 1000px; /* Ajusta esta altura según sea necesario */
-  transition: all 0.3s ease;
+button {
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-
+button:hover {
+  background-color: #0056b3;
+}
