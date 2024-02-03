@@ -41,8 +41,7 @@ async function editRepositorio(id, contenido) {
     contenido.contenido,
     contenido.enlace_descarga,
     contenido.especialidad,
-    contenido.fecha,
-    '',
+    new Date().toISOString(),
     contenido.comentario,
   ];
   const filaAEditar = parseInt(id) + 1;

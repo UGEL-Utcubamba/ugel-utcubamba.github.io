@@ -72,7 +72,7 @@ function handleAuthClick() {
     }
     document.getElementById('signout_button').style.display = 'inline-block';
     document.getElementById('authorize_button').innerText = 'Refresh';
-    await getTurnos(); // Asegúrate de que la función getTurnos siga siendo válida
+    await getRepositorios(); // Asegúrate de que la función getTurnos siga siendo válida
     actualizarTarjetas(); // Asegúrate de que la función actualizarTarjetas siga siendo válida
   };
 
