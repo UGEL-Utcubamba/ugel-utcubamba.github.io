@@ -20,7 +20,7 @@ async function getRepositorios() {
 
   repositorios = [];
   range.values.forEach((fila) => {
-    if (isNaN(parseInt(fila[0])) || fila[5] !== undefined) return;
+    //if (isNaN(parseInt(fila[0])) || fila[5] !== undefined) return;
     const nuevoRepositorio = {
       id: fila[0],
       autor: fila[1],
