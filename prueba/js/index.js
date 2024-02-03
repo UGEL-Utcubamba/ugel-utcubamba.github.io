@@ -1,54 +1,54 @@
-// import turnos from "./turnos.js";
+// import repositorio from "./repositorio.js";
 
-const turnosContainer = document.getElementById("turnosContainer");
+const repositorioContainer = document.getElementById("repositorioContanier");
 const detalleContainer = document.getElementById("detalleContainer");
 let indiceSeleccionado;
 
-const clienteElement = document.getElementById("cliente");
-const modeloElement = document.getElementById("modelo");
-const problemaElement = document.getElementById("problema");
+const autorElement = document.getElementById("autor");
+const contenidoElement = document.getElementById("contenido");
+const enlaceElement = document.getElementById("enlace");
 const comentarioElement = document.getElementById("comentario");
-const marcarTerminadoElement = document.getElementById("finalizar");
+//const marcarTerminadoElement = document.getElementById("finalizar");
 
 
-function createTarjeta(turno,index){
+function createTarjeta(repositorio,index){
   const nuevaTarjeta = document.createElement("div");
   nuevaTarjeta.classList = "tarjeta";
   nuevaTarjeta.innerHTML = `
-    <h3>${turno.cliente}</h3>
-    <p>${turno.email}</p>
-    <p>${turno.modelo}</p>
-    <p>${turno.problema}</p>
+    <h3>${repositorio.autor}</h3>
+    <p>${repositorio.contenido}</p>
+    <p>${repositorio.enlace}</p>
+    <p>${repositorio.comentario}</p>
   `
   nuevaTarjeta.addEventListener("click", ()=> actualizarDetalle(index))
-  turnosContainer.appendChild(nuevaTarjeta);
+  repositorioContainer.appendChild(nuevaTarjeta);
 }
 
 function actualizarTarjetas(){
-  turnosContainer.innerHTML = "";
-  turnos.forEach((turno,i) => {
-    createTarjeta(turno,i);
+  repositorioContainer.innerHTML = "";
+  repositorios.forEach((repositorio,i) => {
+    createTarjeta(repositorio,i);
   })
 }
 
 function actualizarDetalle(index){
-  if(indiceSeleccionado !== undefined) turnosContainer.children[indiceSeleccionado].classList.toggle("seleccionado",false);
-  clienteElement.innerText = turnos[index].cliente;
-  modeloElement.innerText = turnos[index].modelo;
-  problemaElement.innerText = turnos[index].problema;
+  if(indiceSeleccionado !== undefined) repositorioContainer.children[indiceSeleccionado].classList.toggle("seleccionado",false);
+  autorElement.innerText = repositorios[index].cliente;
+  contenidoElement.innerText = repositorios[index].modelo;
+  enlaceElement.innerText = repositorios[index].problema;
   detalleContainer.classList.toggle("escondido",false);
   indiceSeleccionado = index;
-  turnosContainer.children[indiceSeleccionado].classList.toggle("seleccionado",true);
+  repositorioContainer.children[indiceSeleccionado].classList.toggle("seleccionado",true);
 }
 
 finalizar.addEventListener("click",()=> marcarTerminado(indiceSeleccionado))
 
 async function marcarTerminado(i){
-  const updateTurno = turnos[i];
-  updateTurno.comentario = comentarioElement.value;
-  const res = await editTurno(updateTurno.id,updateTurno);
+  const updateRepositorio = repositorios[i];
+  updateRepositorio.comentario = comentarioElement.value;
+  const res = await editTurno(updateRepositorio.id,updateRepositorio);
   if(res.status === 200){
-    turnos = turnos.filter(turno => turno.id !== updateTurno.id);
+    repositorios = turnos.filter(repositorio => repositorio.id !== updateRepositorio.id);
     indiceSeleccionado = 0;
     await actualizarTarjetas()
     detalleContainer.classList.toggle("escondido",true);
