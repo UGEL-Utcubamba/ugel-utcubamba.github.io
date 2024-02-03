@@ -1,4 +1,12 @@
-body {
+:root{
+  --color-text-titulos: #ffffff;
+  --color-texto: rgba(255, 255, 255, 0.867);
+  --color-acento: #E6E4C6;
+  --color-fondo: #0E3A47;
+  --color-fondo-tarjeta: #ffffff27;
+}
+
+body{
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
   color: #333;
@@ -6,13 +14,7 @@ body {
   padding: 0;
 }
 
-.container {
-  width: 80%;
-  margin: auto;
-  overflow: hidden;
-}
-
-header {
+header{
   background: #005f6b;
   color: white;
   padding-top: 30px;
@@ -21,19 +23,39 @@ header {
   text-align: center;
 }
 
-header h1, header h2 {
-  padding: 0;
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 100px);
 }
 
-.downloads {
-  background: #fff;
-  padding: 15px;
-  margin-top: 15px;
+/* Estilos para la sección de detalles */
+#detalleContainer {
+  margin-top: 20px;
+  text-align: center;
 }
 
-.download-link {
+.detalle-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.detalle-item {
+  background-color: #f0f0f0;
+  border-left: 5px solid #005f6b;
+  padding: 10px;
+  text-align: left;
+}
+
+.detalle-item strong {
+  font-weight: bold;
+  color: #005f6b;
+}
+
+.download-button {
   display: block;
-  margin-bottom: 10px;
   background: #005f6b;
   color: white;
   text-decoration: none;
@@ -42,73 +64,23 @@ header h1, header h2 {
   text-align: center;
 }
 
-.download-link:hover {
+.download-button:hover {
   background: #028f9b;
 }
 
-.ugel-logo {
-  display: block;
-  margin: 0 auto;
-  width: 100px; /* Ajusta el tamaño según tus necesidades */
+.comentario-input {
+  padding: 5px;
 }
 
-.specialist-name {
-  color: #555;
-  font-style: italic;
-  margin-left: 20px;
-}
-
-.agenda {
-  list-style: none;
-  padding: 0;
-  margin-top: 20px;
-}
-
-.agenda li {
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
-  border-left: 5px solid #005f6b;
+.finalizar-button {
+  background-color: #005f6b;
+  color: white;
   padding: 10px;
-  position: relative;
-}
-
-.agenda strong {
   font-weight: bold;
-  color: #005f6b;
+  border: unset;
+  cursor: pointer;
 }
 
-.agenda p {
-  margin: 0;
-  color: #333;
-}
-
-.agenda li:before {
-  content: "\2022"; /* Crea un marcador de viñeta personalizado */
-  color: #005f6b;
-  font-weight: bold;
-  font-size: 1.2em;
-  position: absolute;
-  left: -25px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-
-.escondido {
-  display: none;
-}
-
-#detalleContainer {
-  display: none;
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-#detalleContainer.visible {
-  display: block;
-  opacity: 1;
-  max-height: 1000px; /* Ajusta esta altura según sea necesario */
-  transition: all 0.3s ease;
+.finalizar-button:hover {
+  background-color: #028f9b;
 }
