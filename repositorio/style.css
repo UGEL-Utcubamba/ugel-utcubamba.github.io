@@ -1,88 +1,94 @@
-:root {
-  --color-text-titulos: #ffffff;
-  --color-texto: rgba(255, 255, 255, 0.867);
-  --color-acento: #E6E4C6;
-  --color-fondo: #0E3A47;
-  --color-fondo-tarjeta: #ffffff27;
-}
-
 body {
-  background-color: var(--color-fondo);
-  color: var(--color-texto);
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-
-h2, h3, h4, h5, h6 {
-  color: var(--color-text-titulos);
-  margin: 0px;
-}
-
-button {
-  background-color: var(--color-acento);
-  padding: 20px;
-  font-weight: bold;
-  border-radius: 2px;
-  border: unset;
-  cursor: pointer;
-}
-
-#repositoriosContainer {
-  display: flex;
-  margin-bottom: 20px;
-  overflow-x: auto;
-  width: 95vw;
-}
-
-.tarjeta {
-  border: 1px solid var(--color-fondo);
-  max-width: 200px;
-  padding: 10px;
-  background-color: var(--color-fondo-tarjeta);
-  user-select: none;
-  cursor: pointer;
-}
-
-.tarjeta:hover, .tarjeta.seleccionado {
-  background-color: var(--color-acento);
-  color: var(--color-fondo);
-}
-
-.tarjeta:hover h3, .tarjeta.seleccionado h3 {
-  color: var(--color-fondo);
-}
-
-.tarjeta p {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
   margin: 0;
+  padding: 0;
 }
 
-#detalleContainer {
-  background-color: var(--color-fondo-tarjeta);
-  padding: 10px;
+.container {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
 }
 
-#detalleContainer div {
-  margin-bottom: 10px;
-}
-
-#detalleContainer input {
-  padding: 5px;
-}
-
-.escondido {
-  display: none;
-}
-
-footer {
+header {
+  background: #005f6b;
+  color: white;
+  padding-top: 30px;
+  min-height: 70px;
+  border-bottom: #028f9b 3px solid;
   text-align: center;
 }
 
-footer a {
-  color: var(--color-texto);
+header h1, header h2 {
+  padding: 0;
+}
+
+.downloads {
+  background: #fff;
+  padding: 15px;
+  margin-top: 15px;
+}
+
+.download-link {
+  display: block;
+  margin-bottom: 10px;
+  background: #005f6b;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.download-link:hover {
+  background: #028f9b;
+}
+
+.ugel-logo {
+  display: block;
+  margin: 0 auto;
+  width: 100px; /* Ajusta el tamaño según tus necesidades */
+}
+
+.specialist-name {
+  color: #555;
+  font-style: italic;
+  margin-left: 20px;
+}
+
+.agenda {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.agenda li {
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  border-left: 5px solid #005f6b;
+  padding: 10px;
+  position: relative;
+}
+
+.agenda strong {
+  font-weight: bold;
+  color: #005f6b;
+}
+
+.agenda p {
+  margin: 0;
+  color: #333;
+}
+
+.agenda li:before {
+  content: "\2022"; /* Crea un marcador de viñeta personalizado */
+  color: #005f6b;
+  font-weight: bold;
+  font-size: 1.2em;
+  position: absolute;
+  left: -25px;
+  top: 50%;
+  transform: translateY(-50%);
 }
