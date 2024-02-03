@@ -92,3 +92,8 @@ header h1, header h2 {
   top: 50%;
   transform: translateY(-50%);
 }
+
+
+.escondido {
+  display: none;
+}
