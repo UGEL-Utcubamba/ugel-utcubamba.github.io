@@ -1,7 +1,7 @@
 const hoja = "Repositorios";
 let turnos;
 
-async function getTurnos() {
+async function getRepositorios() {
   let response;
   try {
     response = await gapi.client.sheets.spreadsheets.values.get({
