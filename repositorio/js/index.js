@@ -1,35 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
-  initClient();
+  handleClientLoad();
 });
 
-async function initClient() {
-  try {
-      await gapi.client.init({
-          apiKey: API_KEY,
-          clientId: CLIENT_ID,
-          discoveryDocs: DISCOVERY_DOCS,
-          scope: SCOPES,
-      });
-      await gapi.client.load('sheets', 'v4');
-      loadRepositorios();
-  } catch (error) {
-      console.error("Error loading GAPI client for API", error);
-  }
-}
-
 async function loadRepositorios() {
-  try {
-      const repositorios = await getRepositorios();
-      displayRepositorios(repositorios);
-  } catch (error) {
-      console.error("Error loading repositorios", error);
-  }
+  const repositorios = await getRepositorios();
+  displayRepositorios(repositorios);
 }
 
 function displayRepositorios(repositorios) {
   const repositoriosContainer = document.getElementById('repositorios-container');
   repositoriosContainer.innerHTML = '';
-  repositorios.forEach((repo, index) => {
+  repositorios.forEach((repo) => {
       const repoElement = document.createElement('div');
       repoElement.innerHTML = `
           <div>ID: ${repo[0]}</div>

@@ -16,8 +16,12 @@ async function initClient() {
 function updateSigninStatus(isSignedIn) {
   if (isSignedIn) {
       console.log('El usuario está firmado y listo para acceder a la API.');
+      document.getElementById('signin-button').style.display = 'none';
+      document.getElementById('signout-button').style.display = 'block';
   } else {
       console.log('El usuario no está firmado.');
+      document.getElementById('signin-button').style.display = 'block';
+      document.getElementById('signout-button').style.display = 'none';
   }
 }
 
@@ -28,3 +32,5 @@ function handleSignInClick(event) {
 function handleSignOutClick(event) {
   gapi.auth2.getAuthInstance().signOut();
 }
+
+// Reemplaza 'TU_API_KEY' y 'TU_CLIENT_ID' con tus propias credenciales.
