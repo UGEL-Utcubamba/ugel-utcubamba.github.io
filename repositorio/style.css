@@ -84,3 +84,19 @@ main {
 .finalizar-button:hover {
   background-color: #028f9b;
 }
+
+/* Estilo para el botón "Iniciar sesión" */
+.login-button {
+  background-color: #005f6b; /* Color de fondo */
+  color: white; /* Color del texto */
+  padding: 10px 20px; /* Espaciado interno */
+  border: none; /* Sin bordes */
+  border-radius: 5px; /* Borde redondeado */
+  font-weight: bold; /* Texto en negrita */
+  cursor: pointer; /* Cursor al pasar el ratón */
+  margin-right: 10px; /* Espacio a la derecha (ajústalo según tus necesidades) */
+}
+
+.login-button:hover {
+  background-color: #028f9b; /* Cambio de color al pasar el ratón */
+}
