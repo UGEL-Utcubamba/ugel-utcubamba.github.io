@@ -23,11 +23,11 @@ async function getRepositorios() {
     if (isNaN(parseInt(fila[0])) || fila[5] !== undefined) return;
     const nuevoTurno = {
       id: fila[0],
-      cliente: fila[1],
-      email: fila[2],
-      modelo: fila[3],
-      problema: fila[4],
-      fecha_terminado: fila[5],
+      autor: fila[1],
+      contenido: fila[2],
+      enlace: fila[3],
+      especialidad: fila[4],
+      fecha: fila[5],
       comentario: fila[6]
     };
     repositorios.push(nuevoTurno);
@@ -37,10 +37,10 @@ async function getRepositorios() {
 async function editTurno(id, contenido) {
   const update = [
     contenido.id,
-    contenido.cliente,
-    contenido.email,
-    contenido.modelo,
-    contenido.problema,
+    contenido.autor,
+    contenido.contenido,
+    contenido.enlace,
+    contenido.especialidad,
     new Date().toISOString(),
     contenido.comentario,
   ]
