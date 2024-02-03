@@ -46,9 +46,9 @@ finalizar.addEventListener("click",()=> marcarTerminado(indiceSeleccionado))
 async function marcarTerminado(i){
   const updateRepositorio = repositorios[i];
   updateRepositorio.comentario = comentarioElement.value;
-  const res = await editTurno(updateRepositorio.id,updateRepositorio);
+  const res = await editRepositorio(updateRepositorio.id,updateRepositorio);
   if(res.status === 200){
-    repositorios = turnos.filter(repositorio => repositorio.id !== updateRepositorio.id);
+    repositorios = repositorios.filter(repositorio => repositorio.id !== updateRepositorio.id);
     indiceSeleccionado = 0;
     await actualizarTarjetas()
     detalleContainer.classList.toggle("escondido",true);

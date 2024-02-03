@@ -1,7 +1,7 @@
 const hoja = "Repositorio";
-let repositorio;
+let repositorios;
 
-async function getrepositorio() {
+async function getRepositorios() {
   let response;
   try {
     response = await gapi.client.sheets.spreadsheets.values.get({
@@ -18,10 +18,10 @@ async function getrepositorio() {
     return;
   }
 
-  repositorio = [];
+  repositorios = [];
   range.values.forEach((fila) => {
     if (isNaN(parseInt(fila[0])) || fila[5] !== undefined) return;
-    const nuevoTurno = {
+    const nuevoRepositorio = {
       id: fila[0],
       autor: fila[1],
       enlace: fila[2],
@@ -29,11 +29,11 @@ async function getrepositorio() {
       fecha:  fila[4]
  
     };
-    repositorio.push(nuevoTurno);
+    repositorios.push(nuevoRepositorio);
   });
 }
 
-async function editTurno(id, contenido) {
+async function editRepositorio(id, contenido) {
   const update = [
     contenido.id,
     contenido.autor,
