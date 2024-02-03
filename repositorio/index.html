@@ -5,18 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Repositorio de Documentos</title>
-    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="js/credenciales.js"></script>
+    <script src="js/index.js" defer></script>
+    <script async defer src="https://apis.google.com/js/api.js" id="gapi"></script>
+    <script async defer src="https://accounts.google.com/gsi/client" id="gis"></script>
+    <script async defer src="js/sheets.js"></script>
+    <title>Document</title>
 </head>
 <body>
-    <h1>Repositorio de Documentos</h1>
-    <div id="content">
-        <button id="signin-button" onclick="handleSignInClick()">Iniciar sesión</button>
-        <button id="signout-button" onclick="handleSignOutClick()">Cerrar sesión</button>
-        <div id="repositorios-container"></div>
+<header>
+    <h1>Repositorios</h1>
+</header>
+<main>
+    <div id="repositoriosContainer"></div>
+    <div id="detalleContainer" class="escondido">
+        <h2 id="autor">Autor</h2>
+        <p>Contenido: <span id="contenido"></span></p>
+        <p>Enlace de Descarga: <span id="enlaceDescarga"></span></p>
+        <p>Especialidad: <span id="especialidad"></span></p>
+        <p>Fecha: <span id="fecha"></span></p>
+        <div>
+            <label for="comentario">Comentario: </label>
+            <input name="comentario" id="comentario"></input>
+        </div>
+        <button id="finalizar">Marcar finalizado</button>
     </div>
-    <script src="js/auth.js"></script>
-    <script src="js/index.js"></script>
-    <script src="js/sheets.js"></script>
+</main>
+
+<!-- Add buttons to initiate auth sequence and sign out -->
+<div>
+    <button id="authorize_button" onclick="handleAuthClick()">Iniciar sesión</button>
+    <button id="signout_button" onclick="handleSignoutClick()">Cerrar sesión</button>
+</div>
+<script src="js/auth.js"></script>
+<footer>
+    <p>Hecho con amor por Calo de <a href="https://www.youtube.com/channel/UCWDxiTN0CBZzVwvHFQUk92w" target="_blank">puntoJson</a></p>
+    <p><a href="https://youtu.be/GUgf4UmYnHQ" target="_blank">¿Cómo lo hice?</a></p>
+</footer>
 </body>
 </html>

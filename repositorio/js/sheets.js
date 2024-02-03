@@ -6,7 +6,7 @@ async function getRepositorios() {
   try {
     response = await gapi.client.sheets.spreadsheets.values.get({
       spreadsheetId: SPREADSHEET,
-      range: hoja + "!A:G",
+      range: hoja + "!A:H", // Asegúrate de ajustar el rango según tus necesidades
     });
   } catch (err) {
     document.getElementById("content").innerText = err.message;
@@ -14,56 +14,43 @@ async function getRepositorios() {
   }
   const range = response.result;
   if (!range || !range.values || range.values.length == 0) {
-    document.getElementById("content").innerText = "No hay repositorios disponibles.";
+    document.getElementById("content").innerText = "No values found.";
     return;
   }
-  repositorios = range.values;
+
+  repositorios = [];
+  range.values.forEach((fila) => {
+    if (isNaN(parseInt(fila[0])) || fila[6] !== undefined) return;
+    const nuevoRepositorio = {
+      id: fila[0],
+      autor: fila[1],
+      contenido: fila[2],
+      enlace_descarga: fila[3],
+      especialidad: fila[4],
+      fecha: fila[5],
+      comentario: fila[7]
+    };
+    repositorios.push(nuevoRepositorio);
+  });
 }
 
-async function addRepositorio(repositorioData) {
-  const {id, autor, contenido, enlaceDescarga, especialidad, fecha, comentario} = repositorioData;
-  const values = [[id, autor, contenido, enlaceDescarga, especialidad, fecha, comentario]];
-  try {
-    const response = await gapi.client.sheets.spreadsheets.values.append({
-      spreadsheetId: SPREADSHEET,
-      range: hoja,
-      valueInputOption: 'RAW',
-      resource: {values}
-    });
-    if (response.result.updates.updatedRows === 1) {
-      console.log('Repositorio añadido con éxito.');
-    }
-  } catch (err) {
-    console.error('Error al añadir repositorio:', err);
-  }
-}
-
-async function updateRepositorio(rowIndex, repositorioData) {
-  const {id, autor, contenido, enlaceDescarga, especialidad, fecha, comentario} = repositorioData;
-  const values = [[id, autor, contenido, enlaceDescarga, especialidad, fecha, comentario]];
-  try {
-    const response = await gapi.client.sheets.spreadsheets.values.update({
-      spreadsheetId: SPREADSHEET,
-      range: `${hoja}!A${rowIndex}:G${rowIndex}`,
-      valueInputOption: 'RAW',
-      resource: {values}
-    });
-    if (response.result.updatedRows === 1) {
-      console.log('Repositorio actualizado con éxito.');
-    }
-  } catch (err) {
-    console.error('Error al actualizar repositorio:', err);
-  }
-}
-
-async function deleteRepositorio(rowIndex) {
-  try {
-    const response = await gapi.client.sheets.spreadsheets.values.clear({
-      spreadsheetId: SPREADSHEET,
-      range: `${hoja}!A${rowIndex}:G${rowIndex}`,
-    });
-    console.log('Repositorio eliminado con éxito.');
-  } catch (err) {
-    console.error('Error al eliminar repositorio:', err);
-  }
+async function editRepositorio(id, contenido) {
+  const update = [
+    contenido.id,
+    contenido.autor,
+    contenido.contenido,
+    contenido.enlace_descarga,
+    contenido.especialidad,
+    contenido.fecha,
+    '',
+    contenido.comentario,
+  ];
+  const filaAEditar = parseInt(id) + 1;
+  response = await gapi.client.sheets.spreadsheets.values.update({
+    spreadsheetId: SPREADSHEET,
+    range: `${hoja}!A${filaAEditar}:H${filaAEditar}`, // Asegúrate de ajustar el rango según tus necesidades
+    values: [update],
+    valueInputOption: "USER_ENTERED"
+  });
+  return response;
 }

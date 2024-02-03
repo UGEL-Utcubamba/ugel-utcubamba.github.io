@@ -1,36 +1,101 @@
-function handleClientLoad() {
-  gapi.load('client:auth2', initClient);
+/* exported gapiLoaded */
+/* exported gisLoaded */
+/* exported handleAuthClick */
+/* exported handleSignoutClick */
+
+// Discovery doc URL for APIs used by the quickstart
+const DISCOVERY_DOC = 'https://sheets.googleapis.com/$discovery/rest?version=v4';
+
+// Authorization scopes required by the API; multiple scopes can be
+// included, separated by spaces.
+const SCOPES = 'https://www.googleapis.com/auth/spreadsheets';
+
+let tokenClient;
+let gapiInited = false;
+let gisInited = false;
+
+document.getElementById('authorize_button').style.visibility = 'hidden';
+document.getElementById('signout_button').style.display = 'none';
+
+document.getElementById("gapi").addEventListener("load", gapiLoaded);
+document.getElementById("gis").addEventListener("load", gisLoaded);
+
+/**
+ * Callback after api.js is loaded.
+ */
+function gapiLoaded() {
+  gapi.load('client', initializeGapiClient);
 }
 
-async function initClient() {
+/**
+ * Callback after the API client is loaded. Loads the
+ * discovery doc to initialize the API.
+ */
+async function initializeGapiClient() {
   await gapi.client.init({
-      apiKey: 'AIzaSyBVC8PpgVrq85xt9UnbHParUi-O4pUBd8I',
-      clientId: '196951549765-2nkohp29igtk5njjfn1bc3unk9iesgfq.apps.googleusercontent.com',
-      discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
-      scope: 'https://www.googleapis.com/auth/spreadsheets'
+    apiKey: API_KEY,
+    discoveryDocs: [DISCOVERY_DOC],
   });
-  gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-  updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+  gapiInited = true;
+  maybeEnableButtons();
 }
 
-function updateSigninStatus(isSignedIn) {
-  if (isSignedIn) {
-      console.log('El usuario está firmado y listo para acceder a la API.');
-      document.getElementById('signin-button').style.display = 'none';
-      document.getElementById('signout-button').style.display = 'block';
-  } else {
-      console.log('El usuario no está firmado.');
-      document.getElementById('signin-button').style.display = 'block';
-      document.getElementById('signout-button').style.display = 'none';
+/**
+ * Callback after Google Identity Services are loaded.
+ */
+function gisLoaded() {
+  tokenClient = google.accounts.oauth2.initTokenClient({
+    client_id: CLIENT_ID,
+    scope: SCOPES,
+    callback: '', // defined later
+  });
+  gisInited = true;
+  maybeEnableButtons();
+}
+
+/**
+ * Enables user interaction after all libraries are loaded.
+ */
+function maybeEnableButtons() {
+  if (gapiInited && gisInited) {
+    document.getElementById('authorize_button').style.visibility = 'visible';
   }
 }
 
-function handleSignInClick(event) {
-  gapi.auth2.getAuthInstance().signIn();
+/**
+ *  Sign in the user upon button click.
+ */
+function handleAuthClick() {
+  tokenClient.callback = async (resp) => {
+    if (resp.error !== undefined) {
+      throw (resp);
+    }
+    document.getElementById('signout_button').style.display = 'inline-block';
+    document.getElementById('authorize_button').innerText = 'Refresh';
+    await getTurnos(); // Asegúrate de que la función getTurnos siga siendo válida
+    actualizarTarjetas(); // Asegúrate de que la función actualizarTarjetas siga siendo válida
+  };
+
+  if (gapi.client.getToken() === null) {
+    // Prompt the user to select a Google Account and ask for consent to share their data
+    // when establishing a new session.
+    tokenClient.requestAccessToken({ prompt: 'consent' });
+  } else {
+    // Skip display of account chooser and consent dialog for an existing session.
+    tokenClient.requestAccessToken({ prompt: '' });
+  }
 }
 
-function handleSignOutClick(event) {
-  gapi.auth2.getAuthInstance().signOut();
+/**
+ *  Sign out the user upon button click.
+ */
+function handleSignoutClick() {
+  const token = gapi.client.getToken();
+  if (token !== null) {
+    google.accounts.oauth2.revoke(token.access_token);
+    gapi.client.setToken('');
+    document.getElementById('content').innerText = '';
+    document.getElementById('authorize_button').innerText = 'Authorize';
+    document.getElementById('signout_button').style.visibility = 'hidden';
+  }
 }
-
-// Reemplaza 'TU_API_KEY' y 'TU_CLIENT_ID' con tus propias credenciales.
