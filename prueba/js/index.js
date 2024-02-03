@@ -15,7 +15,7 @@ function createTarjeta(turno,index){
   const nuevaTarjeta = document.createElement("div");
   nuevaTarjeta.classList = "tarjeta";
   nuevaTarjeta.innerHTML = `
-    <h3>${turno.cliente}</h3>
+    <h3>${turno.autor}</h3>
     <p>${turno.email}</p>
     <p>${turno.modelo}</p>
     <p>${turno.problema}</p>
