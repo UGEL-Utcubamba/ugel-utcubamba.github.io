@@ -5,32 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hoja de Cálculo de Google Sheets Incrustada</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
+        body, html {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+header {
+    background: #005f6b;
+    color: white;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #028f9b 3px solid;
+}
+
+header h1, header h2 {
+    padding: 0 15px;
+}
+      
+        .sheet-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100vw; /* Ancho de la ventana del navegador */
+            height: 100vh; /* Alto de la ventana del navegador */
+            border: none;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-        }
-        .sheet-container {
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-radius: 8px;
-            overflow: hidden;
         }
         iframe {
-            width: 600px; /* Ajusta al ancho deseado */
-            height: 400px; /* Ajusta al alto deseado */
+            width: 100%;
+            height: 100%;
             border: none;
         }
+        
     </style>
 </head>
 <body>
-    <div class="sheet-container">
-        <!-- Reemplaza 'src' con la URL de tu Google Sheet publicada -->
-        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQUV9CUTBPuyIg0KHyAp8CD5HmQzKwU-ZttyojuZsGh_-x2zszb4qVoSVhd5FyjOkqLBvWuWRpvsWvX/pubhtml?gid=1330803436&single=true"></iframe>
-    </div>
+    <div class="container">
+        <header>
+            <img src="../LOGO_UGEL.png" alt="Logo UGEL" class="ugel-logo">
+            <h1>Repositorio - UGEL Utcubamba</h1>
+            <div class="sheet-container">
+                <!-- Reemplaza 'src' con la URL de tu Google Sheet publicada -->
+                <iframe src="https://docs.google.com/spreadsheets/d/e/tu_id_publicado/pubhtml?widget=true&amp;headers=false"></iframe>
+            </div>
+        </header>
+    
 </body>
 </html>
