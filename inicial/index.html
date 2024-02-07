@@ -7,44 +7,36 @@
     <style>
         body, html {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: auto; /* Cambiado a auto para permitir desplazamiento si es necesario */
-        }
-
-        .container {
-            max-width: 960px; /* Ajuste para una anchura máxima estándar */
-            margin: 20px auto; /* Aumento del margen superior e inferior */
             overflow: hidden;
-            padding: 20px; /* Añadido relleno para espacio alrededor del contenido */
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra suave para definición */
-            background-color: #ffffff; /* Fondo blanco para el contenedor para contraste */
+            background-color: #f4f4f4;
         }
 
         header {
             background: #005f6b;
             color: white;
-            padding: 20px 15px; /* Ajustado para un relleno uniforme */
-            border-bottom: #028f9b 3px solid;
-            text-align: center; /* Centrado del texto del encabezado */
+            padding: 10px 15px;
+            text-align: center;
         }
 
         .ugel-logo {
-            height: 50px; /* Ajuste del tamaño del logo */
-            margin-bottom: 10px; /* Espacio debajo del logo */
+            height: 40px; /* Ajusta según el tamaño deseado del logo */
         }
 
         .sheet-container {
-            margin-top: 20px; /* Espacio antes del contenedor de la hoja */
+            position: absolute;
+            top: 60px; /* Ajusta este valor según la altura de tu encabezado */
+            left: 0;
+            right: 0;
+            bottom: 0;
         }
 
         iframe {
-            width: 100%; /* Ancho al 100% del contenedor */
-            height: 600px; /* Altura fija para el iframe, ajustar según necesidad */
-            border: none; /* Elimina el borde */
+            width: 100%;
+            height: 100%;
+            border: none;
         }
     </style>
 </head>
