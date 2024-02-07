@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoja de Cálculo de Google Sheets Incrustada</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .sheet-container {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        iframe {
+            width: 600px; /* Ajusta al ancho deseado */
+            height: 400px; /* Ajusta al alto deseado */
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="sheet-container">
+        <!-- Reemplaza 'src' con la URL de tu Google Sheet publicada -->
+        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQUV9CUTBPuyIg0KHyAp8CD5HmQzKwU-ZttyojuZsGh_-x2zszb4qVoSVhd5FyjOkqLBvWuWRpvsWvX/pubhtml?gid=1330803436&single=true"></iframe>
+    </div>
+</body>
+</html>
