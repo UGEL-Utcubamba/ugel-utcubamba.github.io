@@ -1,25 +1,20 @@
 const canvas = document.getElementById('canvas');
+const spinSound = new Audio('spin-sound.mp3');
+spinSound.loop = true;
 const ctx = canvas.getContext('2d');
 const spinButton = document.getElementById('spinButton');
-const studentsInput = document.getElementById('studentsInput');
 const submitButton = document.getElementById('submitButton');
-const generateGroupsButton = document.getElementById('generateGroupsButton');
-const numGroupsElement = document.getElementById('numGroups');
-const groupsContainer = document.getElementById('groupsContainer');
+const studentInput = document.getElementById('studentInput');
+const numGroupsSelect = document.getElementById('numGroups');
+
+let numEstudiantes = 0;
 let estudiantes = [];
 
 const colors = ['#FF0000', '#FF7F00', '#FFFF00', '#00FF00', '#0000FF', '#4B0082', '#8B00FF'];
-const spinSound = new Audio('spin-sound.mp3');
-spinSound.loop = true; 
 
-function updateStudents() {
-    estudiantes = studentsInput.value.split('\n');
-    drawSegments();
-}
 
-submitButton.addEventListener('click', updateStudents);
 
-function drawSegment(segment, index, numEstudiantes) {
+function drawSegment(segment, index) {
     const angle = (2 * Math.PI) / numEstudiantes;
     const startAngle = index * angle;
     const endAngle = (index + 1) * angle;
@@ -34,22 +29,19 @@ function drawSegment(segment, index, numEstudiantes) {
 }
 
 function drawSegments() {
-    const numEstudiantes = estudiantes.length;
-    ctx.clearRect(0, 0, canvas.width, canvas.height); // limpia el canvas antes de dibujar los segmentos
     for (let i = 0; i < numEstudiantes; i++) {
-        drawSegment(estudiantes[i], i, numEstudiantes);
-        drawText(estudiantes[i], i, numEstudiantes);
+        drawSegment(estudiantes[i], i);
+        drawText(estudiantes[i], i);
     }
 }
 
 function rotateWheel() {
-    const angle = (2 * Math.PI) / estudiantes.length;
+    const angle = (2 * Math.PI) / numEstudiantes;
     ctx.translate(400, 400);
     ctx.rotate(angle);
     ctx.translate(-400, -400);
 }
-
-function drawText(segment, index, numEstudiantes) {
+function drawText(segment, index) {
     const angle = (2 * Math.PI) / numEstudiantes;
     const startAngle = index * angle;
     const endAngle = (index + 1) * angle;
@@ -65,15 +57,65 @@ function drawText(segment, index, numEstudiantes) {
     ctx.restore();
 }
 
+
+
+drawSegments();
+spinButton.addEventListener('click', spinWheel);
+
+submitButton.addEventListener('click', function() {
+    estudiantes = studentInput.value.split('\n').filter(Boolean);
+    numEstudiantes = estudiantes.length;
+    drawSegments();
+});
+
+spinButton.addEventListener('click', function() {
+    if (estudiantes.length > 0) {
+        spinWheel();
+    } else {
+        alert('Por favor, ingresa al menos un estudiante.');
+    }
+});
+
+function divideIntoGroups(numGroups) {
+    let groups = [];
+    const shuffledStudents = estudiantes.sort(() => Math.random() - 0.5);
+
+    for (let i = 0; i < numGroups; i++) {
+        const group = shuffledStudents.filter((_, index) => index % numGroups === i);
+        groups.push(group);
+    }
+
+    return groups;
+}
+// Resto del código...
+
+function displayGroups(groups) {
+    const groupsContainer = document.getElementById('groupsContainer');
+    groupsContainer.innerHTML = '';
+
+    groups.forEach((group, index) => {
+        const groupElement = document.createElement('div');
+        groupElement.innerHTML = `
+            <h2>Grupo ${index + 1}</h2>
+            <ul>
+                ${group.map(student => `<li>${student}</li>`).join('')}
+            </ul>
+        `;
+
+        groupsContainer.appendChild(groupElement);
+    });
+}
+
 function spinWheel() {
-    const duration = 2000;
-    const steps = 100;
+    const duration = 4000;
+    const steps = 50;
     const stepDuration = duration / steps;
     const rotations = 10;
     const selectedStudentElement = document.getElementById("selectedStudent");
 
     let currentStep = 0;
     spinButton.disabled = true;
+
     spinSound.play();
 
     function animate() {
@@ -84,53 +126,34 @@ function spinWheel() {
             setTimeout(animate, stepDuration);
         } else {
             spinButton.disabled = false;
-            const selected = Math.floor(Math.random() * estudiantes.length);
-            selectedStudentElement.innerText = `Estudiante seleccionado: ${estudiantes[selected]}`;
+            const selected = Math.floor(Math.random() * numEstudiantes);
+            //selectedStudentElement.innerText = `Estudiante seleccionado: ${estudiantes[selected]}`;
 
             spinSound.pause();
-            spinSound.currentTime = 0; 
+            spinSound.currentTime = 0;
+
+            const numGroups = numGroupsSelect.value;
+            const groups = divideIntoGroups(numGroups);
+            displayGroups(groups);
         }
     }
 
     animate();
 }
 
-function generateGroups() {
-    const numGroups = numGroupsElement.value;
-    const numStudents = estudiantes.length;
-    const studentsPerGroup = Math.floor(numStudents / numGroups);
-
-    groupsContainer.innerHTML = '';
-
-    for (let i = 0; i < numGroups; i++) {
-        const groupElement = document.createElement('div');
-        groupElement.className = 'group';
-
-        const groupHeader = document.createElement('h2');
-        groupHeader.textContent = `Grupo ${i + 1}`;
-        groupElement.appendChild(groupHeader);
-
-        const groupList = document.createElement('ul');
-        for (let j = 0; j < studentsPerGroup; j++) {
-            const studentIndex = i * studentsPerGroup + j;
-            if (studentIndex < numStudents) { 
-                const studentElement = document.createElement('li');
-                studentElement.textContent = estudiantes[studentIndex];
-                groupList.appendChild(studentElement);
-            }
-        }
-
-        groupElement.appendChild(groupList);
-        groupsContainer.appendChild(groupElement);
-    }
-
-    const remainingStudents = numStudents % numGroups;
-    for (let i = 0; i < remainingStudents; i++) {
-        const studentElement = document.createElement('li');
-        studentElement.textContent = estudiantes[numGroups * studentsPerGroup + i];
-        groupsContainer.children[i].children[1].appendChild(studentElement); 
-    }
-}
-
-generateGroupsButton.addEventListener('click', generateGroups);
+drawSegments();
 spinButton.addEventListener('click', spinWheel);
+
+submitButton.addEventListener('click', function() {
+    estudiantes = studentInput.value.split('\n').filter(Boolean);
+    numEstudiantes = estudiantes.length;
+    drawSegments();
+});
+
+spinButton.addEventListener('click', function() {
+    if (estudiantes.length > 0) {
+        spinWheel();
+    } else {
+        alert('Por favor, ingresa al menos un estudiante.');
+    }
+});
