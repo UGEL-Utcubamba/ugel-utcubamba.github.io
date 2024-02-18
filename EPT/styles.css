@@ -7,7 +7,7 @@ body {
 }
 
 .container {
-    width: 80%;
+    max-width: 1200px;
     margin: auto;
     overflow: hidden;
 }
@@ -24,39 +24,47 @@ header h1, header h2 {
     padding: 0 15px;
 }
 
-.downloads {
-    padding: 15px;
-    margin-top: 15px;
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
 }
 
 .card {
     background: #fff;
-    margin-bottom: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
-.card:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+.resource-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
 }
 
 .download-link {
-    display: block;
-    color: #005f6b;
+    background: #005f6b;
+    color: white;
     text-decoration: none;
-    padding: 10px 15px;
-    border-radius: 0; /* Elimina los bordes redondeados en los enlaces dentro de las tarjetas */
+    padding: 10px;
+    width: 100%;
+    text-align: center;
 }
 
 .download-link:hover {
-    background: #f0f0f0;
+    background: #028f9b;
 }
 
 .specialist-name {
+    margin: 10px;
     color: #555;
-    font-style: italic;
-    padding: 0 15px 10px 15px;
 }
 
 footer {
@@ -64,9 +72,5 @@ footer {
     color: white;
     text-align: center;
     padding: 20px 0;
-}
-
-footer p {
-    margin: 0;
-    padding: 0;
+    margin-top: 20px;
 }
