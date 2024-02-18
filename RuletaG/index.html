@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruleta para Estudiantes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="input-section">
+            <textarea id="studentsInput" placeholder="Ingresar uno por línea"></textarea>
+            <button id="submitButton">Ingresar Estudiantes</button>
+        </div>
+
+        <div class="input-section">
+            <label for="numGroups">Número de Grupos:</label>
+            <input type="number" id="numGroups" min="1">
+            <button id="generateGroupsButton">Generar Grupos</button>
+        </div>
+
+        <canvas id="canvas" width="800" height="800"></canvas>
+        <button id="spinButton">Girar la Ruleta</button>
+        <p id="selectedStudent">Estudiante seleccionado: -</p>
+        <div id="groupsContainer"></div>
+    </div>
+    <script src="script.js"></script>
+    <footer>
+        <p> Derechos reservados al autor: @GBO</p>
+    </footer>
+</body>
+</html>

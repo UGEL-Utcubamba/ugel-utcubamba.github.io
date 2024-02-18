@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruleta para Estudiantes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="inputSection">
+            <textarea id="studentInput" rows="10" cols="50" placeholder="Ingresa los nombres de los estudiantes aquí, uno por línea."></textarea>
+            <button id="submitButton">Ingresar Estudiantes</button>
+            <footer>
+                <p> Derechos reservados al autor: @GBO</p>
+            </footer>
+        </div>
+        <div class="wheelSection">
+            <canvas id="canvas" width="800" height="800"></canvas>
+            <button id="spinButton">Girar la Ruleta</button>
+        </div>
+    </div>
+    <p id="selectedStudent">Estudiante seleccionado: -</p>
+  
+   
+    <script src="script.js"></script>
+</body>
+</html>
