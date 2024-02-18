@@ -25,73 +25,45 @@ header h1, header h2 {
 }
 
 .downloads {
-    background: #fff;
     padding: 15px;
     margin-top: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    background: #fff;
+    margin-bottom: 20px;
     border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .download-link {
     display: block;
-    margin-bottom: 10px;
-    background: #005f6b;
-    color: white;
+    color: #005f6b;
     text-decoration: none;
-    padding: 10px;
-    border-radius: 5px;
-    text-align: center;
+    padding: 10px 15px;
+    border-radius: 0; /* Elimina los bordes redondeados en los enlaces dentro de las tarjetas */
 }
 
 .download-link:hover {
-    background: #028f9b;
-}
-
-.ugel-logo {
-    display: block;
-    margin: 0 auto;
-    width: 100px;
+    background: #f0f0f0;
 }
 
 .specialist-name {
     color: #555;
     font-style: italic;
-    margin-left: 20px;
+    padding: 0 15px 10px 15px;
 }
 
-.agenda {
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
-}
-
-.agenda li {
-    margin-bottom: 20px;
-    background-color: #f0f0f0;
-    border-left: 5px solid #005f6b;
-    padding: 10px;
-    position: relative;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.agenda strong {
-    font-weight: bold;
-    color: #005f6b;
-}
-
-.agenda p {
-    margin: 0;
-    color: #333;
-}
-
-/* Estilos para el pie de página */
 footer {
     background-color: #005f6b;
     color: white;
     text-align: center;
     padding: 20px 0;
-    margin-top: 20px;
 }
 
 footer p {
