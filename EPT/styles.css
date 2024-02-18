@@ -15,13 +15,21 @@ body {
 header {
     background: #005f6b;
     color: white;
-    padding-top: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     min-height: 70px;
     border-bottom: #028f9b 3px solid;
+    text-align: center; /* Centra el contenido del header */
 }
 
 header h1, header h2 {
     padding: 0 15px;
+}
+
+.ugel-logo {
+    width: 80px; /* Ajusta el tamaño del logo */
+    height: auto; /* Mantiene la proporción del logo */
+    margin: 0 auto; /* Centra el logo horizontalmente */
 }
 
 .grid-container {
@@ -40,6 +48,11 @@ header h1, header h2 {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    transition: transform 0.3s ease; /* Añade transición para el efecto hover */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Eleva ligeramente la tarjeta al pasar el cursor */
 }
 
 .resource-image {
@@ -47,6 +60,11 @@ header h1, header h2 {
     height: auto;
     aspect-ratio: 16 / 9;
     object-fit: cover;
+    transition: transform 0.3s ease; /* Suaviza la transición de la animación */
+}
+
+.resource-image:hover {
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño de la imagen */
 }
 
 .download-link {
@@ -56,6 +74,7 @@ header h1, header h2 {
     padding: 10px;
     width: 100%;
     text-align: center;
+    transition: background-color 0.3s ease; /* Suaviza la transición del color de fondo */
 }
 
 .download-link:hover {
