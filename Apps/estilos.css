@@ -14,9 +14,9 @@ body {
 .container {
     flex: 1;
     width: 100%;
-    max-width: 800px; /* Ajustado para un formulario más grande */
+    max-width: 1200px; /* Ajustado para un formulario más grande */
     margin: 0 auto;
-    padding: 5px; /* Corregido para más espacio interior */
+    padding: 20px; /* Corregido para más espacio interior */
     box-sizing: border-box;
     background-color: #fff;
     border-radius: 8px;
@@ -24,7 +24,26 @@ body {
     animation: scaleUp 0.5s ease-in-out;
 }
 
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas en pantallas grandes */
+    gap: 20px; /* Espacio entre elementos de la cuadrícula */
+}
 
+
+.grid-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.fas {
+    color: #007bff;
+}
 /* Estilos para el botón de añadir ítem */
 button {
     background-color: #42FF33;
@@ -185,9 +204,16 @@ footer {
 
 /* Ajuste para que el body ocupe al menos el alto de la ventana, moviendo el footer al final */
 body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     min-height: 100vh;
+    overflow: auto;
 }
 
 /* Asegúrate de que el contenido del body se centre y permita que el footer se mueva según el contenido */
@@ -313,6 +339,32 @@ input[type="submit"]:hover, .boton:hover {
         padding: 15px 30px; /* Incrementa el padding */
     }
 }
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #007bff;
+    border-radius: 4px;
+    background-color: #fff;
+    box-sizing: border-box;
+    color: #333;
+    font-size: 16px;
+}
+
+select:focus {
+    border-color: #0056b3;
+    outline: none;
+}
+
+/* Mejora la apariencia de los botones y select en dispositivos táctiles */
+@media (hover: hover) {
+    select:hover {
+        border-color: #0056b3;
+    }
+}
+
+
 
 /* Estilos para dispositivos con ancho hasta 480px (celulares) */
 @media (max-width: 480px) {
