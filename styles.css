@@ -44,6 +44,23 @@ header h1, header h2 {
 .download-link:hover {
     background: #028f9b;
 }
+
+/* Estilos para el enlace de registrar asistencia */
+.attendance-link {
+    display: block;
+    margin-bottom: 10px;
+    background: #007bff; /* Cambia el color de fondo */
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+/* Estilos para el enlace de registrar asistencia al pasar el ratón por encima */
+.attendance-link:hover {
+    background: #0056b3;
+}
+
 .ugel-logo {
     display: block;
     margin: 0 auto;
