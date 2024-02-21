@@ -25,7 +25,7 @@
     /* Ajustes específicos para gamificación */
     --ancho-formulario: 250px; /* Ancho máximo para el formulario */
     --ancho-card: 300px; /* Ancho fijo para los cards */
-    --altura-card: 250px; /* Altura fija para los cards */
+    --altura-card: 200px; /* Altura fija para los cards */
 }
 
 html {
@@ -203,10 +203,11 @@ li:hover {
     align-items: center; /* Alinea los elementos del formulario en el centro */
 }
 .card {
+    
     background-color: var(--color-fondo-item);
     border: 1px solid var(--color-borde);
-    padding: 20px;
-    margin: 10px 0; /* Ajusta el margen vertical para reducir el espacio entre cards */
+    padding: 10px;
+    margin: 5px 0; /* Ajusta el margen vertical para reducir el espacio entre cards */
     width: var(--ancho-card);
     height: var(--altura-card);
     border-radius: var(--border-radius);
@@ -217,11 +218,25 @@ li:hover {
     box-shadow: var(--sombra);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
+  
 }
 
 .card:hover {
     transform: translateY(-5px);
     box-shadow: var(--sombra-hover);
+}
+
+.card h3 {
+    margin-bottom: 1px; /* Reduce el margen inferior del h3 */
+}
+
+.card p {
+    margin-top: 1px; /* Reduce el margen superior de los párrafos */
+    margin-bottom: 1px; /* Opcional: ajusta también el margen inferior si es necesario */
+}
+.institucion-educativa {
+    color: #C70039; /* O el color que prefieras */
+    font-size: 0.9em; /* Opcional: ajusta el tamaño del texto si lo necesitas */
 }
 
 select {
@@ -268,7 +283,20 @@ select:focus {
     transform: scale(1.05); /* Ligeramente más grande al pasar el mouse */
 }
 
+.evento-hoy {
+    background-color: #FFC300; /* Verde para eventos actuales */
+    color: white;
+}
 
+.evento-futuro {
+    background-color: #FF5733; /* Azul para eventos futuros */
+    color: white;
+}
+
+.evento-pasado {
+    background-color: #C70039; /* Rojo para eventos pasados */
+    color: white;
+}
 
 @media (hover: hover) {
     select:hover {
