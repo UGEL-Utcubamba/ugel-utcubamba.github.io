@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lanzamiento de Nuestra Aplicación</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .hero-section {
+            background-color: #021B79;
+            color: white;
+            padding: 60px 0;
+        }
+        .hero-section h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .hero-section p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        .download-section {
+            padding: 60px 0;
+        }
+        .download-section h2 {
+            margin-bottom: 30px;
+        }
+        .feature-icon {
+            font-size: 3em;
+            color: #021B79;
+            margin-bottom: 10px;
+        }
+        .feature-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .feature-description {
+            font-size: 1em;
+        }
+        .screenshots {
+            margin: 30px 0;
+        }
+        .screenshots img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .footer a {
+            color: #ffcc00;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <img src="path_to_logo_image.jpeg" alt="Logo UGEL Utcubamba" class="app-logo mb-4" style="max-width: 150px;">
+            <h1>Lanzamiento de Nuestra Aplicación</h1>
+            <p>Descarga la última versión de nuestra aplicación y disfruta de todas sus funcionalidades.</p>
+            <a href="path_to_your_apk_file.apk" class="btn btn-lg btn-warning"><i class="fas fa-download"></i> Descargar APK</a>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download-section text-center">
+        <div class="container">
+            <h2>Características de la Aplicación</h2>
+            <p>Nuestra aplicación incluye las siguientes características:</p>
+            <div class="row">
+                <div class="col-md-4">
+                    <i class="fas fa-users feature-icon"></i>
+                    <h3 class="feature-title">Fácil de Usar</h3>
+                    <p class="feature-description">Interfaz intuitiva y fácil de navegar.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-shield-alt feature-icon"></i>
+                    <h3 class="feature-title">Segura</h3>
+                    <p class="feature-description">Tus datos están protegidos con nuestra tecnología de seguridad de última generación.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-sync feature-icon"></i>
+                    <h3 class="feature-title">Actualizaciones Constantes</h3>
+                    <p class="feature-description">Recibe actualizaciones regulares con nuevas funcionalidades.</p>
+                </div>
+            </div>
+
+            <h2 class="screenshots-title">Pantallas de la Aplicación</h2>
+            <div class="screenshots">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="path_to_image1.jpeg" alt="Pantalla Principal">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="path_to_image2.jpeg" alt="Pantalla Asistencias Técnicas">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="path_to_image3.jpeg" alt="Pantalla Comunicados">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 UGEL Utcubamba. Todos los derechos reservados.</p>
+            <p>Visita nuestro sitio web para más información: <a href="https://ugelutcubamba.tech">https://ugelutcubamba.tech</a></p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
